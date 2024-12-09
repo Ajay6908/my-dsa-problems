@@ -22,7 +22,7 @@ public class prime {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int[] primy = isPrime(n); 
-        for(int i=1;i<n;i++)
+        for(int i=2;i<n;i++)
         {
             if(primy[i]==1)
             System.out.print(i+" ");
