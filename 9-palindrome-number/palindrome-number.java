@@ -8,10 +8,8 @@ class Solution {
              sum=(sum*10)+n;
              x=x/10;
         }
-        if(temp==sum)
-        return true;
-        else
-        return false;
+        
+        return true?temp==sum:false;
         
     }
 }
