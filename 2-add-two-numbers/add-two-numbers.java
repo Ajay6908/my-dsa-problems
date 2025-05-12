@@ -9,30 +9,35 @@
  * }
  */
 class Solution {
-    public static ListNode recur(ListNode l1,ListNode l2)
-    {
-        if(l1==null&&l2==null)
-        return null;
-        if(l1==null)
-        l1=new ListNode(0);
-        if(l2==null)
-        l2=new ListNode(0);
-        int value=l1.val+l2.val;
-        if(value>9)
-        {
-            value%=10;
-            if(l1.next==null)
-            l1.next=new ListNode(1);
-            else
-            {
-                l1.next.val=l1.next.val+1;
-            }
-        }
-        return new ListNode(value,recur(l1.next,l2.next));
-    }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return recur(l1,l2);
-        
+        ListNode head1 = l1;
+        ListNode head2 = l2;
+        int carry = 0;
+        int sum = 0;
+        ListNode extr = new ListNode(-1);
+        ListNode ans = extr;
+        while(head1!=null||head2!=null)
+        {
+            sum = carry;
+            if(head1!=null)
+            sum = sum + head1.val;
+            if(head2!=null)
+            sum = sum + head2.val;
+            ListNode temp = new ListNode(sum%10);
+            ans.next = temp;
+            ans = temp;
+            carry = sum/10;
+            if(head1!=null)
+            head1=head1.next;
+            if(head2!=null)
+            head2=head2.next;
+        }
+        if(carry>0)
+        {
+            ListNode last = new ListNode(carry);
+            ans.next = last;
+        }
+        return extr.next;
         
     }
 }
