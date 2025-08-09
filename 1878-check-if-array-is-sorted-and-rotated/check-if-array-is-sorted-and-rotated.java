@@ -1,14 +1,13 @@
 class Solution {
-    public boolean check(int[] nums) {
-        int n = nums.length;
+    public boolean check(int[] a) {
+        int n = a.length;
         int cnt = 0;
-        for(int i=0;i<n;i++)
+        for(int i = 0;i<n;i++)
         {
-            if(nums[i]>nums[(i+1)%n])
+            if(a[i]>a[(i+1)%n])
             cnt++;
         }
-        if(cnt<=1) return true;
-        return false;
+        return cnt<=1;
         
     }
 }
