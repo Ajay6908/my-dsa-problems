@@ -4,12 +4,12 @@ class Solution {
         int n = nums.length;
         for(int i=0;i<n;i++)
         {
-            int diff = target - nums[i];
-            if(map.containsKey(diff))
+          
+            if(map.containsKey(target-nums[i]))
             {
-                return new int[]{map.get(diff),i};
+                return new int[]{map.get(target-nums[i]),i};
             }
-            map.put(nums[i],i);
+              map.put(nums[i],i);
         }
         return new int[]{};
         
