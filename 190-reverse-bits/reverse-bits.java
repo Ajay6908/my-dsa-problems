@@ -7,7 +7,7 @@ public class Solution {
             
             if((n&1)==1)
             {
-                res = res+(int)Math.pow(2,31-i);
+                res = res+(1<<(31-i));
             }
             n = n>>1;
         }
