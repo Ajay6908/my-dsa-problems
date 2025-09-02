@@ -20,11 +20,27 @@ class Solution {
     public int coinChange(int[] arr, int k) {
         int n = arr.length;
         int dp[][] = new int[n][k+1];
-        for(int[] temp:dp)
+        for(int i=0;i<=k;i++)
         {
-            Arrays.fill(temp,-1);
+            if(i%arr[0]==0)
+            dp[0][i] = i/arr[0];
+            else 
+            dp[0][i] = (int)1e9;
         }
-        int ans = recur(arr,n-1,k,dp);
-        return (int)1e9==ans?-1:ans;
+        for(int i=1;i<n;i++)
+        {
+            for(int j = 0;j<=k;j++)
+            {
+                int move = (int)1e9;
+                int notmove = dp[i-1][j];
+                if(j>=arr[i])
+                {
+                    move = 1+dp[i][j-arr[i]];
+                }
+                dp[i][j] = Math.min(move,notmove);
+            }
+        }
+        return dp[n-1][k]==(int)1e9?-1:dp[n-1][k];
+     
     }
 }
