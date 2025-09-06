@@ -1,23 +1,24 @@
 class Solution {
-    public int searchInsert(int[] nums, int k) {
-        int first = 0;
+    public int searchInsert(int[] nums, int target) {
+        int low = 0;
         int n = nums.length;
-        int last = n-1;
+        int high = n-1;
         int ans = n;
-        while(first<=last)
+        while(low<=high)
         {
-            int mid = (first+last)/2;
-            if(nums[mid]>=k)
+            int mid = (high+low)/2;
+            if(nums[mid]>=target)
             {
                 ans = mid;
-                last = mid-1;
+             
+                high = mid-1;
             }
-            else{  
-                first = mid+1;
+            else{
+                   low = mid+1;
             }
+
         }
         return ans;
-
         
     }
 }
