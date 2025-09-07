@@ -18,9 +18,9 @@ class Solution {
     {
         if(root==null)
         return 0;
-        int left = 1+recur(root.left);
-        int right = 1+recur(root.right);
-        return Math.max(left,right);
+        int left = recur(root.left);
+        int right = recur(root.right);
+        return 1+Math.max(left,right);
     }
     public int maxDepth(TreeNode root) {
         int ans= recur(root);
