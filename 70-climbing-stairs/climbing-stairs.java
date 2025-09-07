@@ -1,19 +1,22 @@
 class Solution {
-    
-    public int climbStairs(int n) {
-      
-        int prev = 1;
-        int secprev = 1;
-        int curr = 0;
-        for(int i=2;i<=n;i++)
+    public static int recur(int n, int[] dp)
+    {
+        if(n==0||n==1)
         {
-            curr = prev + secprev;
-            secprev = prev; 
-            prev = curr;
-            
-            
+            return 1;
         }
-        return prev;
+        if(dp[n]!=-1)
+        {
+            return dp[n];
+        }
+        return dp[n] = recur(n-1,dp)+recur(n-2,dp);
+    }
+    public int climbStairs(int n) {
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
+        return recur(n,dp);
+        
+
         
     }
 }
